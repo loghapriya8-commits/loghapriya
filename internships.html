@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>INTERNSHIPS | NANO-CAREER SOLUTIONS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <style>
+      .hero-intern { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 3rem 1.5rem; border-radius: 16px; margin-bottom: 2rem; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+      .intern-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+      .company-card { transition: transform 0.2s; border-top: 4px solid var(--accent); }
+      .company-card:hover { transform: translateY(-5px); }
+      .filter-bar { background: var(--card); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; border: 1px solid var(--line); }
+      .status-open { color: var(--success); font-weight: 600; font-size: 0.8rem; }
+      .status-closed { color: var(--danger); font-weight: 600; font-size: 0.8rem; }
+      .roadmap-step { padding: 1rem; border-left: 3px solid var(--accent); background: rgba(14, 165, 233, 0.05); margin-bottom: 1rem; border-radius: 0 8px 8px 0; }
+    </style>
+  </head>
+  <body>
+    <header class="top-nav"><div class="container top-nav-inner"><a class="brand" href="home.html"><span class="logo-mark">🎓</span> NANO-CAREER SOLUTIONS</a><nav class="nav-links"><a href="home.html">🏠 Home</a><a href="resume.html">📄 Resume</a><a href="jobs.html">💼 Jobs</a><a href="govt.html">🏛 Govt</a><a href="private.html">🏢 Private</a><a href="interview.html" class="nav-highlight">🎯 Interview</a><a href="news.html">📰 News</a><a href="internships.html">🎓 Internships</a><a href="developer.html">👨‍💻 Developer</a></nav><div class="actions"><select id="langSelect" class="lang-select"><option value="en">EN</option><option value="ta">TA</option><option value="hi">HI</option><option value="te">TE</option><option value="bn">BN</option><option value="ml">ML</option></select><button class="btn secondary" id="voiceStart">🎙</button><button class="btn secondary" id="voiceStop">⏹</button></div></div></header>
+
+    <main class="container section">
+      <section class="hero-intern">
+        <span class="badge" style="background: var(--accent); color: white;">PLACEMENT READINESS PORTAL</span>
+        <h1 style="font-size: 2.5rem; margin: 1rem 0;">🚀 INTERNSHIP & JOB OPPORTUNITIES</h1>
+        <p class="muted" style="color: #94a3b8; max-width: 700px; margin: 0 auto;">Market Fit Analytics System designed for College Placement success. Bridging the gap from Academic Learning to Industry Requirements.</p>
+      </section>
+
+      <section class="grid-2">
+        <article class="card">
+          <h2 style="color: var(--accent);">🌍 1. INTRODUCTION</h2>
+          <p>The Internship Program module helps students:</p>
+          <ul class="list">
+            <li>Discover internships & jobs in real-time</li>
+            <li>Build industry-ready skills for 2026 market</li>
+            <li>Apply directly to top global companies</li>
+            <li>Track career growth and market fit</li>
+          </ul>
+          <p class="notice">👉 Academic learning → Industry requirements</p>
+        </article>
+        <article class="card">
+          <h2 style="color: var(--accent);">🌐 2. SEARCH PLATFORM</h2>
+          <div style="display: flex; gap: 1rem; flex-direction: column;">
+            <div class="card" style="background: rgba(14, 165, 233, 0.05);">
+              <h4>🔎 Featured Internship Portal</h4>
+              <p class="small muted">Indeed Jobs (Tamil Nadu – Freshers)</p>
+              <a href="https://in.indeed.com/q-fresher-l-tamil-nadu-jobs.html" target="_blank" class="btn" style="width: fit-content;">Visit Indeed</a>
+            </div>
+            <div class="card" style="background: rgba(16, 185, 129, 0.05);">
+              <h4>🌍 Engineering Platform</h4>
+              <p class="small muted">Sanfoundry Internships (All Domains)</p>
+              <a href="https://www.sanfoundry.com/internship/" target="_blank" class="btn" style="width: fit-content;">Visit Sanfoundry</a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="card">
+          <h2 style="color: var(--accent);">📊 3. INTERNSHIP ANALYTICS & FILTER</h2>
+          <div class="filter-bar">
+            <div>
+              <label class="small muted">Filter by your CGPA</label>
+              <select id="cgpaFilter" class="lang-select" style="width: 200px; margin-top: 0.5rem;">
+                <option value="0">All Opportunities</option>
+                <option value="6.0">6.0+ CGPA</option>
+                <option value="7.0">7.0+ CGPA</option>
+                <option value="8.0">8.0+ CGPA</option>
+                <option value="9.0">9.0+ CGPA (Elite)</option>
+              </select>
+            </div>
+            <div style="flex-grow: 1;">
+              <p class="small muted">Live Sync: <span id="syncTime" style="color: var(--success); font-weight: bold;">Updating...</span></p>
+              <p class="small muted">Found <span id="matchCount" style="color: var(--accent); font-weight: bold;">35</span> active vacancies for your profile.</p>
+            </div>
+            <button class="btn secondary" onclick="location.reload()">🔄 Force Refresh</button>
+          </div>
+
+          <div class="intern-grid" id="internContainer">
+            <!-- Dynamic Company Cards -->
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-3 section">
+        <article class="card">
+          <h3>📅 4. YEAR ROADMAP</h3>
+          <div class="roadmap-step"><strong>1st Year:</strong> Online / Basics</div>
+          <div class="roadmap-step"><strong>2nd Year:</strong> Paid / Skill Building</div>
+          <div class="roadmap-step"><strong>3rd Year:</strong> Summer / Industry</div>
+          <div class="roadmap-step"><strong>Final Year:</strong> Career / Full-time</div>
+        </article>
+        <article class="card">
+          <h3>🧩 5. TYPES</h3>
+          <ul class="list">
+            <li>💻 <b>Online:</b> Flexible, for beginners</li>
+            <li>🏢 <b>Offline:</b> Real company culture</li>
+            <li>🏛️ <b>Govt:</b> ISRO, DRDO, NIC</li>
+            <li>💰 <b>Paid:</b> ₹10k – ₹80k/month</li>
+            <li>🎓 <b>Free:</b> Certificate focused</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>🧠 6. TOP DOMAINS</h3>
+          <div class="pill-row" style="margin-top: 1rem;">
+            <span class="pill">CSE</span><span class="pill">AI/ML</span><span class="pill">Data Science</span><span class="pill">Cyber</span><span class="pill">Cloud</span><span class="pill">IoT</span><span class="pill">Blockchain</span><span class="pill">Mech</span><span class="pill">ECE</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="card section">
+        <h2>📄 RESUME & INTERNSHIP HACKS</h2>
+        <div class="grid-3">
+          <div>
+            <h4>💡 Skills for CSE</h4>
+            <p class="small muted">Python, Java, React, SQL, AWS, GitHub, DSA</p>
+          </div>
+          <div>
+            <h4>💰 Stipend Guide</h4>
+            <p class="small muted">Startups: 10-25k | Big Tech: 25-80k | Govt: 5-15k</p>
+          </div>
+          <div>
+            <h4>✅ Success Tips</h4>
+            <p class="small muted">Apply 6 months early, work on projects, attend hackathons.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><div class="container footer-inner"><p class="footer-line">Developed by V. MANOJ at TAKSHASHILA UNIVERSITY.</p><div class="footer-links"><a href="home.html">Home</a><span>|</span><a href="developer.html">Developer</a><span>|</span><a href="mailto:mumumumu1327@gmail.com">Feedback</a></div></div></footer>
+
+    <script src="assets/app.js"></script>
+    <script>
+      const companies = [
+        { name: "Google", domain: "Software/Cloud", skills: "Java, Python, DS", cgpa: 9.0, date: "2026-05-15", link: "https://www.google.com/about/careers/applications/students/", status: "Open" },
+        { name: "Amazon", domain: "SDE/AWS", skills: "Java, C++, Cloud", cgpa: 8.5, date: "2026-05-20", link: "https://www.amazon.jobs/en/teams/internships-for-students", status: "Open" },
+        { name: "Microsoft", domain: "SDE/AI", skills: "C#, Azure, Python", cgpa: 8.5, date: "2026-06-01", link: "https://careers.microsoft.com/students/us/en/ur-internship-program", status: "Open" },
+        { name: "TCS", domain: "IT Services", skills: "Java, SQL, Aptitude", cgpa: 7.0, date: "2026-06-10", link: "https://www.tcs.com/careers/india/tcs-internship-program", status: "Open" },
+        { name: "Infosys", domain: "Software Eng", skills: "Python, Java, Web", cgpa: 7.0, date: "2026-05-30", link: "https://www.infosys.com/careers/instep.html", status: "Open" },
+        { name: "Wipro", domain: "Digital Tech", skills: "Full Stack, JS", cgpa: 6.5, date: "2026-06-05", link: "https://careers.wipro.com/global-campus", status: "Open" },
+        { name: "Tata Elxsi", domain: "Embedded/Auto", skills: "C, C++, IoT", cgpa: 7.5, date: "2026-06-15", link: "https://www.tataelxsi.com/careers", status: "Open" },
+        { name: "Bosch", domain: "IoT/Mechatronics", skills: "Embedded, Python", cgpa: 7.5, date: "2026-06-12", link: "https://www.bosch.in/careers/", status: "Open" },
+        { name: "NVIDIA", domain: "AI/Graphics", skills: "CUDA, C++, ML", cgpa: 9.0, date: "2026-07-01", link: "https://www.nvidia.com/en-us/about-nvidia/careers/students/", status: "Open" },
+        { name: "Intel", domain: "Hardware/AI", skills: "Verilog, Python", cgpa: 8.5, date: "2026-07-05", link: "https://www.intel.com/content/www/us/en/jobs/student-center.html", status: "Open" },
+        { name: "Accenture", domain: "Strategy/IT", skills: "Cloud, Analytics", cgpa: 7.0, date: "2026-06-20", link: "https://www.accenture.com/in-en/careers/local/students", status: "Open" },
+        { name: "IBM", domain: "Data Science/AI", skills: "ML, SQL, Python", cgpa: 7.5, date: "2026-06-25", link: "https://www.ibm.com/in-en/employment/internships/", status: "Open" },
+        { name: "Cisco", domain: "Networking/Sec", skills: "CCNA, Python", cgpa: 8.0, date: "2026-07-10", link: "https://jobs.cisco.com/jobs/SearchJobs/intern", status: "Open" },
+        { name: "Adobe", domain: "Product Design", skills: "UI/UX, React", cgpa: 8.5, date: "2026-07-15", link: "https://www.adobe.com/careers/university.html", status: "Open" },
+        { name: "Zomato", domain: "Product/Web", skills: "Node.js, React", cgpa: 8.0, date: "2026-05-25", link: "https://www.zomato.com/careers", status: "Open" },
+        { name: "Deloitte", domain: "Risk/Cyber", skills: "Security, Auditing", cgpa: 7.0, date: "2026-06-08", link: "https://www2.deloitte.com/in/en/pages/careers/articles/student-internships.html", status: "Open" },
+        { name: "Amazon AWS", domain: "Cloud Ops", skills: "Linux, Python", cgpa: 8.5, date: "2026-06-18", link: "https://www.amazon.jobs/en/teams/aws-internships", status: "Open" },
+        { name: "Polygon", domain: "Blockchain", skills: "Solidity, Rust", cgpa: 8.0, date: "2026-08-01", link: "https://polygon.technology/careers", status: "Open" },
+        { name: "Ubisoft", domain: "Game Dev", skills: "Unity, C++", cgpa: 7.5, date: "2026-08-05", link: "https://www.ubisoft.com/en-us/company/careers/students-graduates", status: "Open" },
+        { name: "ARM", domain: "Embedded", skills: "Assembly, C", cgpa: 8.5, date: "2026-08-10", link: "https://www.arm.com/company/careers/students", status: "Open" },
+        { name: "ISRO", domain: "Space Tech", skills: "Robotics, AI", cgpa: 9.0, date: "2026-09-01", link: "https://www.isro.gov.in/Careers.html", status: "Closed" },
+        { name: "DRDO", domain: "Defence IT", skills: "C, Cybersecurity", cgpa: 8.5, date: "2026-09-05", link: "https://www.drdo.gov.in/careers", status: "Closed" },
+        { name: "HP", domain: "IT Support", skills: "Networking, HW", cgpa: 6.0, date: "2026-06-12", link: "https://jobs.hp.com/en-us/students", status: "Open" },
+        { name: "Zoho", domain: "SaaS Product", skills: "Java, C, Aptitude", cgpa: 6.5, date: "2026-05-22", link: "https://www.zoho.com/careers/", status: "Open" },
+        { name: "Freshworks", domain: "Full Stack", skills: "Ruby, React", cgpa: 7.0, date: "2026-05-28", link: "https://www.freshworks.com/company/careers/", status: "Open" },
+        { name: "HCL Tech", domain: "System Admin", skills: "Linux, SQL", cgpa: 6.5, date: "2026-06-14", link: "https://www.hcltech.com/careers/graduate-hiring", status: "Open" },
+        { name: "Cognizant", domain: "Digital Eng", skills: "Java, React", cgpa: 7.0, date: "2026-06-16", link: "https://www.cognizant.com/in/en/careers/students", status: "Open" },
+        { name: "L&T", domain: "Infrastructure", skills: "Civil, AutoCAD", cgpa: 7.0, date: "2026-06-22", link: "https://www.larsentoubro.com/corporate/careers/", status: "Open" },
+        { name: "Reliance", domain: "Telecom/Data", skills: "Networking, AI", cgpa: 7.5, date: "2026-06-24", link: "https://www.ril.com/Careers.aspx", status: "Open" },
+        { name: "Jio Platforms", domain: "Web/AI", skills: "Node.js, React", cgpa: 7.5, date: "2026-06-26", link: "https://careers.jio.com/", status: "Open" },
+        { name: "Paytm", domain: "FinTech", skills: "Java, Go, SQL", cgpa: 7.5, date: "2026-07-02", link: "https://jobs.lever.co/paytm", status: "Open" },
+        { name: "Ola Electric", domain: "EV/Embedded", skills: "C++, Embedded", cgpa: 8.0, date: "2026-07-08", link: "https://olaelectric.com/careers", status: "Open" },
+        { name: "Flipkart", domain: "E-Commerce", skills: "Java, SQL, DS", cgpa: 8.5, date: "2026-07-12", link: "https://www.flipkartcareers.com/", status: "Open" },
+        { name: "PhonePe", domain: "Backend Eng", skills: "Java, Microservices", cgpa: 8.5, date: "2026-07-14", link: "https://www.phonepe.com/careers/", status: "Open" },
+        { name: "BYJU'S", domain: "EdTech", skills: "React, Python", cgpa: 7.0, date: "2026-06-28", link: "https://byjus.com/careers/", status: "Open" }
+      ];
+
+      function renderInternships(minCgpa = 0) {
+        const container = document.getElementById('internContainer');
+        const countEl = document.getElementById('matchCount');
+        container.innerHTML = "";
+        let count = 0;
+        
+        companies.forEach(c => {
+          if (c.cgpa >= minCgpa) {
+            count++;
+            const card = document.createElement('div');
+            card.className = "card company-card";
+            card.innerHTML = `
+              <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                <h4 style="margin:0">${c.name}</h4>
+                <span class="${c.status === 'Open' ? 'status-open' : 'status-closed'}">${c.status === 'Open' ? '🟢 OPEN' : '🔴 CLOSED'}</span>
+              </div>
+              <p class="small" style="color:var(--accent); margin:4px 0;">${c.domain}</p>
+              <p class="small muted"><b>Skills:</b> ${c.skills}</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem;">
+                <span class="badge" style="font-size:0.7rem;">Cutoff: ${c.cgpa} CGPA</span>
+                <span class="small muted" style="font-size:0.7rem;">Int: ${c.date}</span>
+              </div>
+              <a href="${c.link}" target="_blank" class="btn secondary" style="width:100%; margin-top:1rem; padding:0.4rem;">Direct Apply</a>
+            `;
+            container.appendChild(card);
+          }
+        });
+        countEl.textContent = count;
+      }
+
+      document.getElementById('cgpaFilter').addEventListener('change', (e) => {
+        renderInternships(parseFloat(e.target.value));
+      });
+
+      // Simulation for Daily Auto-Update
+      document.getElementById('syncTime').textContent = new Date().toLocaleTimeString() + " (Daily Sync Active)";
+      
+      renderInternships();
+    </script>
+  </body>
+</html>
+
+
+

@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>NCS | Admin Control Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="books-layer"></div>
+    <div class="rain-layer"></div>
+    <header class="top-nav">
+      <div class="container top-nav-inner">
+        <a class="brand" href="index.html"><span class="logo-mark">⚙️</span> NCS ADMIN</a>
+        <div class="actions">
+          <button class="btn danger hidden" id="adminLogoutBtn">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container section">
+      <section id="adminLoginSection" class="card" style="max-width: 600px; margin: 2rem auto;">
+        <h2>Admin Login</h2>
+        <p class="muted small">Full access control + login history + API management.</p>
+        <label>Username</label>
+        <input type="text" id="adminUser" class="input" placeholder="admin" />
+        <label style="margin-top: 0.6rem;">Password</label>
+        <input type="password" id="adminPass" class="input" placeholder="admin@123" />
+        <button id="adminLoginBtn" class="btn" style="margin-top: 1rem;">Authenticate</button>
+        <p id="adminStatus" class="small muted" style="margin-top: 0.8rem;"></p>
+      </section>
+
+      <section id="adminDashboardSection" class="hidden">
+        <div class="kpis" style="margin-bottom: 1rem;">
+          <div class="kpi"><span class="small muted">Users</span><b id="kpiUsers">0</b></div>
+          <div class="kpi"><span class="small muted">Successful Logins</span><b id="kpiLogins">0</b></div>
+          <div class="kpi"><span class="small muted">Jobs</span><b id="kpiJobs">0</b></div>
+          <div class="kpi"><span class="small muted">API Calls</span><b id="kpiApis">0</b></div>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Platform Settings</h3>
+            <label>Maintenance Mode</label>
+            <select id="maintenanceMode" class="input">
+              <option value="off">OFF</option>
+              <option value="on">ON</option>
+            </select>
+            <label style="margin-top: 0.6rem;">Theme Override</label>
+            <select id="themeOverride" class="input">
+              <option value="auto">Auto</option>
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
+            </select>
+            <button class="btn" id="saveSettingsBtn" style="margin-top: 0.7rem;">Save Settings</button>
+          </article>
+
+          <article class="card">
+            <h3>Job Management</h3>
+            <div style="display: flex; gap: 0.4rem;">
+              <input class="input" id="jobTitle" placeholder="Role title" />
+              <input class="input" id="jobCompany" placeholder="Company" />
+            </div>
+            <button class="btn" id="addJobBtn" style="margin-top: 0.7rem;">Add Job</button>
+            <div class="table-wrap" style="margin-top: 0.8rem;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th><th>Title</th><th>Company</th><th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="jobsTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+
+        <article class="card" style="margin-top: 1rem;">
+          <h3>User Access Control</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th><th>Username</th><th>Role</th><th>Domain</th><th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <div class="grid-2" style="margin-top: 1rem;">
+          <article class="card">
+            <h3>Login History</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>User</th><th>Role</th><th>Status</th><th>IP</th><th>Time</th>
+                  </tr>
+                </thead>
+                <tbody id="historyTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+          <article class="card">
+            <h3>API Details</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Method</th><th>Path</th><th>Status</th><th>Time</th>
+                  </tr>
+                </thead>
+                <tbody id="apiLogsTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const byId = (id) => document.getElementById(id);
+      const token = () => localStorage.getItem("ncsToken");
+
+      async function callApi(url, options = {}) {
+        const headers = { "Content-Type": "application/json", ...(options.headers || {}) };
+        if (token()) headers.Authorization = `Bearer ${token()}`;
+        const response = await fetch(url, { ...options, headers });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.message || "Request failed");
+        return data;
+      }
+
+      async function loginAdmin() {
+        const username = byId("adminUser").value.trim();
+        const password = byId("adminPass").value;
+        const status = byId("adminStatus");
+        status.textContent = "Authenticating...";
+        try {
+          const data = await callApi("/api/auth/login", {
+            method: "POST",
+            body: JSON.stringify({ username, password, domain: "Administration" })
+          });
+          if (data.user.role !== "admin") throw new Error("Not an admin user.");
+          localStorage.setItem("ncsToken", data.token);
+          localStorage.setItem("ncsRole", "admin");
+          status.textContent = "Access granted.";
+          showDashboard();
+        } catch (error) {
+          status.textContent = error.message;
+        }
+      }
+
+      async function loadOverview() {
+        const data = await callApi("/api/admin/overview");
+        byId("kpiUsers").textContent = data.totalUsers;
+        byId("kpiLogins").textContent = data.successfulLogins;
+        byId("kpiJobs").textContent = data.totalJobs;
+        byId("kpiApis").textContent = data.apiCalls;
+      }
+
+      async function loadSettings() {
+        const settings = await callApi("/api/admin/settings");
+        const map = {};
+        settings.forEach((s) => { map[s.key] = s.value; });
+        byId("maintenanceMode").value = map.maintenance_mode || "off";
+        byId("themeOverride").value = map.theme_override || "auto";
+      }
+
+      async function saveSettings() {
+        await callApi("/api/admin/settings/maintenance_mode", {
+          method: "PUT",
+          body: JSON.stringify({ value: byId("maintenanceMode").value })
+        });
+        await callApi("/api/admin/settings/theme_override", {
+          method: "PUT",
+          body: JSON.stringify({ value: byId("themeOverride").value })
+        });
+        alert("Settings saved.");
+      }
+
+      async function loadJobs() {
+        const jobs = await callApi("/api/admin/jobs");
+        byId("jobsTableBody").innerHTML = jobs.map((j) => `
+          <tr>
+            <td>${j.id}</td>
+            <td>${j.title}</td>
+            <td>${j.company}</td>
+            <td><button class="btn danger" onclick="deleteJob(${j.id})">Delete</button></td>
+          </tr>
+        `).join("");
+      }
+
+      async function addJob() {
+        const title = byId("jobTitle").value.trim();
+        const company = byId("jobCompany").value.trim();
+        if (!title || !company) return;
+        await callApi("/api/admin/jobs", {
+          method: "POST",
+          body: JSON.stringify({ title, company })
+        });
+        byId("jobTitle").value = "";
+        byId("jobCompany").value = "";
+        await loadJobs();
+        await loadOverview();
+      }
+
+      async function deleteJob(id) {
+        await callApi(`/api/admin/jobs/${id}`, { method: "DELETE" });
+        await loadJobs();
+        await loadOverview();
+      }
+
+      async function loadUsers() {
+        const users = await callApi("/api/admin/users");
+        byId("usersTableBody").innerHTML = users.map((u) => `
+          <tr>
+            <td>${u.id}</td>
+            <td>${u.username}</td>
+            <td>${u.role}</td>
+            <td>${u.preferred_domain || "-"}</td>
+            <td><button class="btn secondary" onclick="toggleRole(${u.id}, '${u.role}')">Toggle Role</button></td>
+          </tr>
+        `).join("");
+      }
+
+      async function toggleRole(id, currentRole) {
+        const role = currentRole === "admin" ? "user" : "admin";
+        await callApi(`/api/admin/users/${id}/role`, {
+          method: "PATCH",
+          body: JSON.stringify({ role })
+        });
+        await loadUsers();
+      }
+
+      async function loadHistory() {
+        const rows = await callApi("/api/admin/login-history");
+        byId("historyTableBody").innerHTML = rows.map((r) => `
+          <tr>
+            <td>${r.username}</td>
+            <td>${r.role}</td>
+            <td>${r.status}</td>
+            <td>${r.ip || "-"}</td>
+            <td>${r.created_at}</td>
+          </tr>
+        `).join("");
+      }
+
+      async function loadApiLogs() {
+        const rows = await callApi("/api/admin/api-logs");
+        byId("apiLogsTableBody").innerHTML = rows.map((r) => `
+          <tr>
+            <td>${r.method}</td>
+            <td>${r.path}</td>
+            <td>${r.status_code}</td>
+            <td>${r.created_at}</td>
+          </tr>
+        `).join("");
+      }
+
+      async function showDashboard() {
+        byId("adminLoginSection").classList.add("hidden");
+        byId("adminDashboardSection").classList.remove("hidden");
+        byId("adminLogoutBtn").classList.remove("hidden");
+        await Promise.all([loadOverview(), loadSettings(), loadJobs(), loadUsers(), loadHistory(), loadApiLogs()]);
+      }
+
+      byId("adminLoginBtn").addEventListener("click", loginAdmin);
+      byId("saveSettingsBtn").addEventListener("click", saveSettings);
+      byId("addJobBtn").addEventListener("click", addJob);
+      byId("adminLogoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("ncsToken");
+        localStorage.removeItem("ncsRole");
+        location.reload();
+      });
+
+      if (localStorage.getItem("ncsRole") === "admin" && token()) {
+        showDashboard().catch(() => {
+          localStorage.removeItem("ncsToken");
+          localStorage.removeItem("ncsRole");
+        });
+      }
+    </script>
+  </body>
+</html>

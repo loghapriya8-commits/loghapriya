@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>NANO-CAREER SOLUTIONS | Student Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="books-layer"></div>
+    <div class="rain-layer"></div>
+
+    <header class="top-nav">
+      <div class="container top-nav-inner">
+        <a class="brand" href="home.html"><span class="logo-mark">🎓</span> NANO-CAREER STUDENT</a>
+        <nav class="nav-links">
+          <a href="home.html">🏠 Home</a><a href="student-dashboard.html">🎓 Dashboard</a><a href="resume.html">📄 Resume</a
+          ><a href="jobs.html">💼 Jobs</a><a href="interview.html">🎯 Interview</a><a href="news.html">📰 News</a>
+        </nav>
+        <div class="actions">
+          <button class="btn secondary" id="themeToggle">🌓 Theme</button>
+          <button class="btn secondary" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <article class="card">
+          <span class="badge">STUDENT SUCCESS COMMAND CENTER</span>
+          <h1>Personal Career Dashboard</h1>
+          <p class="muted">
+            Track daily goals, applications, interviews, and skill growth from one place. This dashboard is designed for
+            practical student execution.
+          </p>
+          <div class="kpis">
+            <div class="kpi"><span class="small muted">Profile Completion</span><b id="kpiProfile">78%</b></div>
+            <div class="kpi"><span class="small muted">Applications</span><b id="kpiApplications">0</b></div>
+            <div class="kpi"><span class="small muted">Interviews</span><b id="kpiInterviews">0</b></div>
+            <div class="kpi"><span class="small muted">Weekly Progress</span><b id="kpiProgress">0%</b></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section grid-2">
+        <article class="card">
+          <h2>👤 Student Profile Snapshot</h2>
+          <label>Student Name</label>
+          <input id="studentName" class="input" placeholder="Enter your name" />
+          <label style="margin-top: 0.5rem;">Target Role</label>
+          <input id="studentRole" class="input" placeholder="Frontend Developer / Data Analyst..." />
+          <label style="margin-top: 0.5rem;">Preferred Domain</label>
+          <input id="studentDomain" class="input" placeholder="CSE / IT / AI-DS / Govt Jobs..." />
+          <button class="btn" id="saveProfileBtn" style="margin-top: 0.8rem;">Save Profile</button>
+          <p class="small muted" id="profileStatus" style="margin-top: 0.6rem;">Profile details help improve recommendations.</p>
+        </article>
+
+        <article class="card">
+          <h2>✅ Daily Execution Planner</h2>
+          <div id="taskList">
+            <label><input type="checkbox" data-task="1" /> Apply to 2 matching jobs</label><br />
+            <label><input type="checkbox" data-task="2" /> Complete 1 mock interview</label><br />
+            <label><input type="checkbox" data-task="3" /> Solve 3 coding questions</label><br />
+            <label><input type="checkbox" data-task="4" /> Update resume with 1 project metric</label><br />
+            <label><input type="checkbox" data-task="5" /> Read 20 mins current affairs</label>
+          </div>
+          <div class="progress" style="margin-top: 0.8rem;">
+            <div class="bar" id="dailyBar" style="width: 0%;"></div>
+          </div>
+          <p class="small muted">Completion: <span id="dailyPercent">0%</span></p>
+        </article>
+      </section>
+
+      <section class="section grid-2">
+        <article class="card">
+          <h2>💼 Application Tracker</h2>
+          <div style="display: flex; gap: 0.5rem;">
+            <input id="appCompany" class="input" placeholder="Company name" />
+            <input id="appRole" class="input" placeholder="Role name" />
+          </div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.6rem;">
+            <select id="appStatus" class="input">
+              <option>Applied</option>
+              <option>Shortlisted</option>
+              <option>Interview Scheduled</option>
+              <option>Rejected</option>
+              <option>Offer Received</option>
+            </select>
+            <button class="btn" id="addApplicationBtn">Add Entry</button>
+          </div>
+          <div class="table-wrap" style="margin-top: 0.9rem;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Company</th><th>Role</th><th>Status</th><th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="applicationsBody"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>🎯 Interview Readiness</h2>
+          <label>Communication</label>
+          <div class="progress"><div class="bar" id="commBar" style="width: 72%;"></div></div>
+          <label style="margin-top: 0.5rem;">Technical Depth</label>
+          <div class="progress"><div class="bar" id="techBar" style="width: 68%;"></div></div>
+          <label style="margin-top: 0.5rem;">Problem Solving</label>
+          <div class="progress"><div class="bar" id="psBar" style="width: 75%;"></div></div>
+          <button class="btn secondary" id="improveScoresBtn" style="margin-top: 0.8rem;">Recalculate Improvement</button>
+          <p class="small muted" id="interviewTip" style="margin-top: 0.6rem;">
+            Tip: Speak answers using STAR format and quantify your project impact.
+          </p>
+        </article>
+      </section>
+
+      <section class="section grid-3">
+        <article class="card">
+          <h3>📌 Smart Next Actions</h3>
+          <ul class="list">
+            <li>Finish one portfolio project and push to GitHub.</li>
+            <li>Apply only to roles with 70%+ skill match.</li>
+            <li>Attend one mock HR interview this week.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>📚 Learning Streak</h3>
+          <p class="muted">Current streak: <b id="streakDays">5 days</b></p>
+          <button class="btn secondary" id="markStudyBtn">Mark Today Completed</button>
+        </article>
+        <article class="card">
+          <h3>🚀 Quick Navigation</h3>
+          <div class="pill-row">
+            <a class="pill" href="resume.html">Resume Builder</a>
+            <a class="pill" href="jobs.html">Job Portal</a>
+            <a class="pill" href="interview.html">Mock Interview</a>
+            <a class="pill" href="news.html">Career News</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p class="footer-line">Student Dashboard powered by NANO-CAREER SOLUTIONS.</p>
+      </div>
+    </footer>
+
+    <script src="assets/app.js"></script>
+    <script>
+      const byIdDash = (id) => document.getElementById(id);
+      const saveData = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+      const readData = (key, fallback) => {
+        try {
+          return JSON.parse(localStorage.getItem(key)) ?? fallback;
+        } catch (e) {
+          return fallback;
+        }
+      };
+
+      function updateDailyProgress() {
+        const checks = [...document.querySelectorAll("#taskList input[type=checkbox]")];
+        const done = checks.filter((c) => c.checked).length;
+        const percent = Math.round((done / checks.length) * 100);
+        byIdDash("dailyBar").style.width = `${percent}%`;
+        byIdDash("dailyPercent").textContent = `${percent}%`;
+        byIdDash("kpiProgress").textContent = `${percent}%`;
+        saveData("ncsDailyTasks", checks.map((c) => c.checked));
+      }
+
+      function renderApplications() {
+        const rows = readData("ncsApplications", []);
+        byIdDash("applicationsBody").innerHTML = rows
+          .map(
+            (r, i) => `
+            <tr>
+              <td>${r.company}</td>
+              <td>${r.role}</td>
+              <td>${r.status}</td>
+              <td><button class="btn danger" onclick="removeApplication(${i})">Delete</button></td>
+            </tr>
+          `
+          )
+          .join("");
+        byIdDash("kpiApplications").textContent = rows.length;
+        const interviews = rows.filter((r) => r.status === "Interview Scheduled").length;
+        byIdDash("kpiInterviews").textContent = interviews;
+      }
+
+      function removeApplication(index) {
+        const rows = readData("ncsApplications", []);
+        rows.splice(index, 1);
+        saveData("ncsApplications", rows);
+        renderApplications();
+      }
+      window.removeApplication = removeApplication;
+
+      function setupDashboard() {
+        const profile = readData("ncsStudentProfile", {
+          name: "",
+          role: "",
+          domain: localStorage.getItem("ncsDomain") || ""
+        });
+        byIdDash("studentName").value = profile.name;
+        byIdDash("studentRole").value = profile.role;
+        byIdDash("studentDomain").value = profile.domain;
+
+        byIdDash("saveProfileBtn").addEventListener("click", () => {
+          const data = {
+            name: byIdDash("studentName").value.trim(),
+            role: byIdDash("studentRole").value.trim(),
+            domain: byIdDash("studentDomain").value.trim()
+          };
+          saveData("ncsStudentProfile", data);
+          byIdDash("profileStatus").textContent = "Profile saved successfully.";
+          byIdDash("profileStatus").style.color = "#4ade80";
+          const score = data.name && data.role && data.domain ? 100 : data.name || data.role || data.domain ? 85 : 60;
+          byIdDash("kpiProfile").textContent = `${score}%`;
+        });
+
+        const savedChecks = readData("ncsDailyTasks", [false, false, false, false, false]);
+        [...document.querySelectorAll("#taskList input[type=checkbox]")].forEach((check, index) => {
+          check.checked = Boolean(savedChecks[index]);
+          check.addEventListener("change", updateDailyProgress);
+        });
+        updateDailyProgress();
+
+        renderApplications();
+        byIdDash("addApplicationBtn").addEventListener("click", () => {
+          const company = byIdDash("appCompany").value.trim();
+          const role = byIdDash("appRole").value.trim();
+          const status = byIdDash("appStatus").value;
+          if (!company || !role) return;
+          const rows = readData("ncsApplications", []);
+          rows.unshift({ company, role, status });
+          saveData("ncsApplications", rows);
+          byIdDash("appCompany").value = "";
+          byIdDash("appRole").value = "";
+          renderApplications();
+        });
+
+        byIdDash("improveScoresBtn").addEventListener("click", () => {
+          const randomUp = () => Math.min(95, 65 + Math.floor(Math.random() * 25));
+          const c = randomUp();
+          const t = randomUp();
+          const p = randomUp();
+          byIdDash("commBar").style.width = `${c}%`;
+          byIdDash("techBar").style.width = `${t}%`;
+          byIdDash("psBar").style.width = `${p}%`;
+          byIdDash("interviewTip").textContent = "Great progress. Continue mock interviews and role-specific DSA practice.";
+        });
+
+        const streak = Number(localStorage.getItem("ncsStudyStreak") || "5");
+        byIdDash("streakDays").textContent = `${streak} days`;
+        byIdDash("markStudyBtn").addEventListener("click", () => {
+          const next = Number(localStorage.getItem("ncsStudyStreak") || "5") + 1;
+          localStorage.setItem("ncsStudyStreak", String(next));
+          byIdDash("streakDays").textContent = `${next} days`;
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", setupDashboard);
+    </script>
+  </body>
+</html>

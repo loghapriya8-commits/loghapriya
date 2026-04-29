@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>NEWS & GOVT SCHEMES | NANO-CAREER SOLUTIONS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <style>
+      .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+      .news-card { cursor: pointer; text-align: center; padding: 1.5rem; background: var(--card); border: 1px solid var(--line); border-radius: 12px; transition: all 0.3s; }
+      .news-card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 4px 15px rgba(14, 165, 233, 0.15); }
+      .news-card i { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+      
+      .headline-list { margin-top: 2rem; display: none; border-top: 2px solid var(--line); padding-top: 2rem; }
+      .headline-item { padding: 1rem; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+      .headline-item:hover { background: rgba(14, 165, 233, 0.05); }
+      
+      .gov-section { border-top: 4px solid var(--accent); padding-top: 3rem; margin-top: 4rem; }
+      .scheme-card { position: relative; border-left: 4px solid var(--accent); }
+      .badge-new { background: var(--success); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; position: absolute; top: 1rem; right: 1rem; }
+      .badge-soon { background: var(--danger); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; position: absolute; top: 1rem; right: 1rem; }
+      
+      .tv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem; }
+      .tv-btn { display: block; text-align: center; padding: 0.8rem; background: #fee2e2; color: #991b1b; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.85rem; border: 1px solid #fecaca; transition: 0.2s; }
+      .tv-btn:hover { background: #fecaca; }
+    </style>
+  </head>
+  <body>
+    <header class="top-nav"><div class="container top-nav-inner"><a class="brand" href="home.html"><span class="logo-mark">📰</span> NANO-CAREER SOLUTIONS</a><nav class="nav-links"><a href="home.html">🏠 Home</a><a href="resume.html">📄 Resume</a><a href="jobs.html">💼 Jobs</a><a href="govt.html">🏛 Govt</a><a href="private.html">🏢 Private</a><a href="interview.html" class="nav-highlight">🎯 Interview</a><a href="news.html">📰 News</a><a href="internships.html">🎓 Internships</a><a href="developer.html">👨‍💻 Developer</a></nav><div class="actions"><select id="langSelect" class="lang-select"><option value="en">EN</option><option value="ta">TA</option><option value="hi">HI</option><option value="te">TE</option><option value="bn">BN</option><option value="ml">ML</option></select><button class="btn secondary" id="voiceStart">🎙</button><button class="btn secondary" id="voiceStop">⏹</button></div></div></header>
+
+    <main class="container section">
+      <!-- News Aggregator Module -->
+      <section>
+        <article class="card">
+          <span class="badge" style="background:var(--accent); color:white;">LIVE AGGREGATOR</span>
+          <h1>📰 ALL-IN-ONE NEWS AGGREGATOR</h1>
+          <p class="muted">Access multiple newspapers and TV channels in one place. Stay updated with daily headlines from across India.</p>
+          
+          <div style="margin-top: 2rem;">
+            <label><b>Select Language:</b></label>
+            <select id="newsLangFilter" class="lang-select" style="width:200px; margin-left: 1rem;">
+              <option value="ta">Tamil (தமிழ்)</option>
+              <option value="en">English</option>
+              <option value="hi">Hindi (हिंदी)</option>
+              <option value="te">Telugu (తెలుగు)</option>
+              <option value="bn">Bengali (বাংলা)</option>
+              <option value="ml">Malayalam (മലയാളம்)</option>
+            </select>
+          </div>
+
+          <div class="news-grid" id="newsSourceGrid">
+            <!-- Dynamic Newspapers -->
+          </div>
+        </article>
+
+        <!-- Headlines Display Area -->
+        <article class="card headline-list" id="headlineArea">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.5rem;">
+            <h2 id="selectedPaperName">Newspaper Headlines</h2>
+            <button class="btn secondary" onclick="document.getElementById('headlineArea').style.display='none'">Close</button>
+          </div>
+          <div id="headlineContainer">
+            <!-- Headlines pop here -->
+          </div>
+        </article>
+
+        <!-- TV Channels -->
+        <article class="card section">
+          <h2>📺 LIVE NEWS CHANNELS</h2>
+          <div class="grid-2">
+            <div>
+              <h4>Tamil Channels</h4>
+              <div class="tv-grid">
+                <a href="https://www.youtube.com/@sunnewstamil/live" target="_blank" class="tv-btn">Sun News</a>
+                <a href="https://tamil.news18.com/live-tv/" target="_blank" class="tv-btn">News18 TN</a>
+                <a href="https://www.polimernews.com/live-tv" target="_blank" class="tv-btn">Polimer News</a>
+                <a href="https://www.thanthitv.com/LiveTV" target="_blank" class="tv-btn">Thanthi TV</a>
+                <a href="https://www.puthiyathalaimurai.com/livetv" target="_blank" class="tv-btn">Puthiya Thalaimurai</a>
+                <a href="https://www.kalaignarseithigal.com/live" target="_blank" class="tv-btn">Kalaignar News</a>
+                <a href="https://rajnewstamil.com/live" target="_blank" class="tv-btn">Raj News</a>
+                <a href="https://malaimurasu.com/live" target="_blank" class="tv-btn">Malai Murasu</a>
+              </div>
+            </div>
+            <div>
+              <h4>English & National</h4>
+              <div class="tv-grid">
+                <a href="https://www.ndtv.com/video/live/channel/ndtv24x7" target="_blank" class="tv-btn">NDTV 24x7</a>
+                <a href="https://www.indiatoday.in/livetv" target="_blank" class="tv-btn">India Today</a>
+                <a href="https://www.cnnnews18.com/livetv/" target="_blank" class="tv-btn">CNN-News18</a>
+                <a href="https://www.republicworld.com/livetv" target="_blank" class="tv-btn">Republic TV</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Government Schemes & Scholarships Module -->
+      <section class="gov-section">
+        <article class="card">
+          <span class="badge" style="background:var(--warning); color:black;">GOVT PORTAL</span>
+          <h1>🏛️ GOVERNMENT SCHEMES & SCHOLARSHIPS</h1>
+          <p class="muted">Daily updated scholarships for students and welfare schemes for citizens. Direct access to official apply links.</p>
+          
+          <div style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+            <input id="govSearch" class="input" style="max-width: 300px;" placeholder="Search scheme or scholarship..." />
+            <select id="govCategory" class="lang-select">
+              <option value="all">All Categories</option>
+              <option value="education">Education</option>
+              <option value="agri">Agriculture</option>
+              <option value="health">Health</option>
+              <option value="senior">Senior Citizens</option>
+            </select>
+            <span class="small muted">Live Updates: <b id="govSyncTime">--:--</b></span>
+          </div>
+        </article>
+
+        <div class="section">
+          <h2>🎓 LATEST SCHOLARSHIPS (2026)</h2>
+          <div class="grid-3" id="scholarshipContainer">
+            <!-- Dynamic Scholarships -->
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>🏛️ WELFARE SCHEMES</h2>
+          <div class="grid-2" id="schemeContainer">
+            <!-- Dynamic Schemes -->
+          </div>
+        </div>
+
+        <article class="card section">
+          <h2>🔗 DIRECT OFFICIAL APPLY LINKS</h2>
+          <div class="grid-3">
+            <a href="https://scholarships.gov.in/" target="_blank" class="card" style="text-align:center;"><b>National Scholarship Portal</b></a>
+            <a href="https://www.tnvelaivaaippu.gov.in/" target="_blank" class="card" style="text-align:center;"><b>TN Employment Portal</b></a>
+            <a href="https://www.mygov.in/" target="_blank" class="card" style="text-align:center;"><b>MyGov India</b></a>
+            <a href="https://pmkisan.gov.in/" target="_blank" class="card" style="text-align:center;"><b>PM-Kisan Portal</b></a>
+            <a href="https://www.tnesevai.tn.gov.in/" target="_blank" class="card" style="text-align:center;"><b>TN e-Sevai</b></a>
+            <a href="https://www.abdm.gov.in/" target="_blank" class="card" style="text-align:center;"><b>Health ID (ABHA)</b></a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer"><div class="container footer-inner"><p class="footer-line">Developed by V. MANOJ at TAKSHASHILA UNIVERSITY.</p><div class="footer-links"><a href="home.html">Home</a><span>|</span><a href="developer.html">Developer</a><span>|</span><a href="mailto:mumumumu1327@gmail.com">Feedback</a></div></div></footer>
+
+    <script src="assets/app.js"></script>
+    <script>
+      const newsSources = {
+        ta: [
+          { name: "தினத்தந்தி", link: "https://www.dailythanthi.com/" },
+          { name: "தினமலர்", link: "https://www.dinamalar.com/" },
+          { name: "தினகரன்", link: "https://www.dinakaran.com/" },
+          { name: "மாலைமலர்", link: "https://www.malaimalar.com/" },
+          { name: "விகடன்", link: "https://www.vikatan.com/" },
+          { name: "இந்து தமிழ்", link: "https://www.hindutamil.in/" },
+          { name: "நக்கீரன்", link: "https://www.nakkheeran.in/" },
+          { name: "தமிழ் எக்ஸ்பிரஸ்", link: "https://tamilexpress.news/" },
+          { name: "புதினம்", link: "https://www.puthinam.com/" },
+          { name: "தமிழ் முரசு", link: "https://www.tamilmurasu.com.sg/" }
+        ],
+        en: [
+          { name: "The Hindu", link: "https://www.thehindu.com/" },
+          { name: "Indian Express", link: "https://indianexpress.com/" },
+          { name: "Times of India", link: "https://timesofindia.indiatimes.com/" },
+          { name: "Hindustan Times", link: "https://www.hindustantimes.com/" },
+          { name: "Deccan Herald", link: "https://www.deccanherald.com/" }
+        ],
+        hi: [
+          { name: "Dainik Jagran", link: "https://www.jagran.com/" },
+          { name: "Amar Ujala", link: "https://www.amarujala.com/" }
+        ],
+        te: [
+          { name: "Eenadu", link: "https://www.eenadu.net/" },
+          { name: "Sakshi", link: "https://www.sakshi.com/" },
+          { name: "Andhra Jyothy", link: "https://www.andhrajyothy.com/" },
+          { name: "Namasthe Telangana", link: "https://www.ntnews.com/" }
+        ],
+        bn: [
+          { name: "Anandabazar Patrika", link: "https://www.anandabazar.com/" },
+          { name: "Bartaman", link: "https://bartamanpatrika.com/" },
+          { name: "Ei Samay", link: "https://eisamay.com/" },
+          { name: "Sangbad Pratidin", link: "https://www.sangbadpratidin.in/" }
+        ],
+        ml: [
+          { name: "Malayala Manorama", link: "https://www.manoramaonline.com/" },
+          { name: "Mathrubhumi", link: "https://www.mathrubhumi.com/" }
+        ]
+      };
+
+      const scholarships = [
+        { name: "National Merit Scholarship", cat: "education", users: "Class 1-12", end: "2026-10-30", link: "https://scholarships.gov.in/", badge: "soon" },
+        { name: "Higher Education Welfare Fund", cat: "education", users: "UG/PG Students", end: "2026-11-15", link: "https://scholarships.gov.in/", badge: "new" },
+        { name: "Post-Matric Scholarship (SC/ST)", cat: "education", users: "SC/ST Students", end: "2026-12-01", link: "https://scholarships.gov.in/", badge: "" },
+        { name: "Medical Research Grant", cat: "health", users: "Medical/Nursing", end: "2026-09-30", link: "https://www.nmc.org.in/", badge: "soon" },
+        { name: "Agriculture Student Fellowship", cat: "agri", users: "Agri Graduates", end: "2026-11-30", link: "https://icar.org.in/", badge: "new" },
+        { name: "Central Sector Scheme", cat: "education", users: "College Freshers", end: "2026-10-15", link: "https://scholarships.gov.in/", badge: "" }
+      ];
+
+      const schemes = [
+        { name: "PM-Kisan Samman Nidhi", cat: "agri", bene: "Farmers", desc: "Annual income support of ₹6,000 in three installments.", link: "https://pmkisan.gov.in/", badge: "" },
+        { name: "Ayushman Bharat (PM-JAY)", cat: "health", bene: "Citizens", desc: "World's largest health insurance scheme providing ₹5 Lakh coverage.", link: "https://nha.gov.in/", badge: "new" },
+        { name: "Senior Citizen Welfare Fund", cat: "senior", bene: "Aged 60+", desc: "Health and financial security schemes for elders.", link: "https://socialjustice.gov.in/", badge: "" },
+        { name: "Skill India Mission", cat: "education", bene: "Youth", desc: "Free vocational training and certification for job readiness.", link: "https://www.skillindia.gov.in/", badge: "new" },
+        { name: "Digital India Scholarship", cat: "education", bene: "IT Students", desc: "Funding for digital innovation projects and startups.", link: "https://www.meity.gov.in/", badge: "soon" }
+      ];
+
+      function updateNews() {
+        const lang = document.getElementById('newsLangFilter').value;
+        const grid = document.getElementById('newsSourceGrid');
+        grid.innerHTML = "";
+        
+        newsSources[lang].forEach(source => {
+          const div = document.createElement('div');
+          div.className = "news-card";
+          div.innerHTML = `<span>📰</span><strong>${source.name}</strong><br><small class="muted">Click to read</small>`;
+          div.onclick = () => showHeadlines(source.name, source.link);
+          grid.appendChild(div);
+        });
+      }
+
+      function showHeadlines(name, link) {
+        document.getElementById('selectedPaperName').innerText = name + " - Top Headlines";
+        const container = document.getElementById('headlineContainer');
+        container.innerHTML = "";
+        
+        // Mocking 10 headlines
+        for(let i=1; i<=10; i++) {
+          const item = document.createElement('div');
+          item.className = "headline-item";
+          item.innerHTML = `<span>Headline #${i}: Latest breaking news from ${name} portal for the year 2026.</span><a href="${link}" target="_blank" class="btn secondary small" style="padding:0.2rem 0.6rem; font-size:0.7rem;">Read Full</a>`;
+          container.appendChild(item);
+        }
+        
+        document.getElementById('headlineArea').style.display = "block";
+        document.getElementById('headlineArea').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      function updateGov() {
+        const q = document.getElementById('govSearch').value.toLowerCase();
+        const cat = document.getElementById('govCategory').value;
+        const sCont = document.getElementById('scholarshipContainer');
+        const mCont = document.getElementById('schemeContainer');
+        
+        sCont.innerHTML = "";
+        mCont.innerHTML = "";
+        
+        scholarships.forEach(s => {
+          if ((cat === 'all' || s.cat === cat) && (s.name.toLowerCase().includes(q))) {
+            const card = document.createElement('div');
+            card.className = "card scheme-card";
+            if(s.badge) card.innerHTML += `<span class="${s.badge === 'new' ? 'badge-new' : 'badge-soon'}">${s.badge.toUpperCase()}</span>`;
+            card.innerHTML += `<h3>${s.name}</h3><p class="small muted"><b>For:</b> ${s.users}</p><p class="small muted"><b>Closing:</b> ${s.end}</p><a href="${s.link}" target="_blank" class="btn secondary" style="width:100%; margin-top:1rem; padding:0.4rem;">Apply Official</a>`;
+            sCont.appendChild(card);
+          }
+        });
+
+        schemes.forEach(s => {
+          if ((cat === 'all' || s.cat === cat) && (s.name.toLowerCase().includes(q))) {
+            const card = document.createElement('div');
+            card.className = "card scheme-card";
+            if(s.badge) card.innerHTML += `<span class="${s.badge === 'new' ? 'badge-new' : 'badge-soon'}">${s.badge.toUpperCase()}</span>`;
+            card.innerHTML += `<h3>${s.name}</h3><p class="small muted"><b>Beneficiaries:</b> ${s.bene}</p><p class="small">${s.desc}</p><a href="${s.link}" target="_blank" class="btn secondary" style="width:100%; margin-top:1rem; padding:0.4rem;">View Scheme</a>`;
+            mCont.appendChild(card);
+          }
+        });
+      }
+
+      document.getElementById('newsLangFilter').addEventListener('change', updateNews);
+      document.getElementById('govSearch').addEventListener('input', updateGov);
+      document.getElementById('govCategory').addEventListener('change', updateGov);
+      
+      document.getElementById('govSyncTime').innerText = new Date().toLocaleTimeString();
+
+      // Initial run
+      updateNews();
+      updateGov();
+    </script>
+  </body>
+</html>
+
+

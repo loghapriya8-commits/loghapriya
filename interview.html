@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>SMART INTERVIEW + INTERVIEW VISION</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="top-nav"><div class="container top-nav-inner"><a class="brand" href="home.html"><span class="logo-mark">🎯</span> NANO-CAREER SOLUTIONS</a><nav class="nav-links"><a href="home.html">🏠 Home</a><a href="resume.html">📄 Resume</a><a href="jobs.html">💼 Jobs</a><a href="govt.html">🏛 Govt</a><a href="private.html">🏢 Private</a><a href="interview.html" class="nav-highlight">🎯 Interview</a><a href="news.html">📰 News</a><a href="developer.html">👨‍💻 Developer</a></nav><div class="actions"><select id="langSelect" class="lang-select"><option value="en">EN</option><option value="ta">TA</option><option value="hi">HI</option><option value="te">TE</option><option value="bn">BN</option><option value="ml">ML</option></select><button class="btn secondary" id="voiceStart">🎙</button><button class="btn secondary" id="voiceStop">⏹</button></div></div></header>
+    <main class="container section">
+      <article class="card"><h1>SMART INTERVIEW – AI-BASED PRACTICE PLATFORM</h1><p class="muted">Realistic mock interview simulation, resume-based questions, HR + technical rounds, voice practice, AI report generation, and role-focused preparation roadmap.</p></article>
+      <section class="grid-2 section">
+        <article class="card"><h2>Core Features</h2><ul class="list"><li>AI Mock Interview Simulation</li><li>Resume-Based Question Generator</li><li>HR Interview Practice</li><li>Technical Interview Practice by domain</li><li>Role-based question sets</li><li>Beginner / Intermediate / Advanced levels</li></ul></article>
+        <article class="card"><h2>INTERVIEW VISION</h2><ul class="list"><li>Voice-based interview (speech-to-text)</li><li>AI instant feedback on relevance/grammar/confidence</li><li>Performance dashboard and progress charts</li><li>Interview report generator with better sample answers</li></ul><div class="actions"><button class="btn" id="interviewStart">Start Voice Round</button><button class="btn secondary" id="interviewStop">Stop</button></div></article>
+      </section>
+      
+      <section class="card section" style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.04), rgba(56, 189, 248, 0.12)); border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 8px 30px rgba(14, 165, 233, 0.15);">
+        <span class="badge" style="margin-bottom: 0.8rem;">🔥 NEW FEATURE</span>
+        <h2 style="font-size: 1.8rem; margin-top: 0;">Skills-Based Job Recommendation</h2>
+        <p class="muted" style="font-size: 1.05rem;">
+          Our platform allows users to select or enter their skills and instantly receive job recommendations that match their profile. 
+          The system compares user skills with job requirements and calculates a match percentage for each role.
+        </p>
+        <p class="muted" style="font-size: 1.05rem;">
+          Users can also view missing skills required for each job and get suggestions to improve their profile. 
+          This helps candidates focus on the right opportunities and prepare effectively for their desired career path.
+        </p>
+
+        <div class="card" style="margin-top: 1.5rem; background: var(--bg); border: 1px solid var(--accent); padding: 2rem; border-radius: 12px;">
+          <h3 style="color: var(--accent); font-size: 1.4rem; border-bottom: 1px solid var(--line); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">⚙️ Exactly How Your Skill Match Score is Calculated</h3>
+          
+          <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+            
+            <div style="flex: 1; min-width: 300px;">
+              <p class="muted" style="margin-bottom: 1rem;">Our AI engine analyzes the gap between your resume/input tools and industry-standard job descriptions (JDs) using a proprietary 3-Layer matching algorithm.</p>
+              
+              <ul class="list" style="margin: 0; padding: 0;">
+                <li style="margin-bottom: 1rem; padding: 1rem; background: var(--card); border-radius: 8px;">
+                  <strong style="color: var(--success); font-size: 1.1rem;">1. Core Explicit Matching (60% Weight)</strong><br />
+                  <span class="small muted">We scan for exact required technical keywords (e.g., if a JD requires React, Node.js, and SQL, and you possess React and SQL, your base score is calculated exponentially).</span>
+                </li>
+                <li style="margin-bottom: 1rem; padding: 1rem; background: var(--card); border-radius: 8px;">
+                  <strong style="color: var(--accent-2); font-size: 1.1rem;">2. Semantic & Related Skills AI (25% Weight)</strong><br />
+                  <span class="small muted">Our NLP agent understands connections. If a JD tests for 'Frontend Frameworks' and you list 'Vue.js', you receive partial credit even if the exact keyword wasn't present.</span>
+                </li>
+                <li style="margin-bottom: 0; padding: 1rem; background: var(--card); border-radius: 8px;">
+                  <strong style="color: var(--warning); font-size: 1.1rem;">3. Experiential Multiplier (15% Weight)</strong><br />
+                  <span class="small muted">Skill mentions tied directly to project impact matrices or professional internships score higher than loosely isolated 'Hobbies' mentions.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div style="flex: 1; min-width: 300px; background: rgba(15, 23, 42, 0.4); padding: 1.5rem; border-radius: 8px; border: 1px dashed var(--line);">
+              <h4 style="margin-top: 0; margin-bottom: 1rem; color: #fff;">📊 Live Example Calculation</h4>
+              <p class="small muted" style="margin-bottom: 0.5rem;">Job Role: <strong>Frontend Developer</strong></p>
+              <p class="small muted" style="margin-bottom: 1rem;">Required Skills: <em>React, JavaScript, HTML, CSS, Git (5 total)</em></p>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;"><span class="small">User Input Skills (Matched: 4/5)</span> <strong style="color: var(--success);">80% Base</strong></div>
+                <div class="progress" style="height: 10px;"><div class="bar" style="width: 80%; background: var(--success);"></div></div>
+              </div>
+
+              <div style="margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;"><span class="small">Semantic Bonus ('Vue' instead of 'React' partial credit)</span> <strong style="color: var(--accent-2);">+5%</strong></div>
+                <div class="progress" style="height: 10px;"><div class="bar" style="width: 5%; background: var(--accent-2);"></div></div>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--line);">
+                <span style="font-size: 1.1rem;">Final AI Match Score</span>
+                <strong style="font-size: 1.8rem; color: var(--success);">85%</strong>
+              </div>
+              
+              <div style="margin-top: 1rem; padding: 0.8rem; background: rgba(220, 38, 38, 0.1); border-radius: 6px; border-left: 3px solid var(--danger);">
+                <span class="small" style="color: var(--danger);"><strong>Critical Missing Skill Identified:</strong> Git</span><br />
+                <span class="small muted">Recommended Action: View standard Git courses to increase total match score by 15%.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 2rem; border-bottom: 1px solid var(--line); padding-bottom: 0.5rem;">Example Output Dashboard</h3>
+        <div class="grid-3" style="margin-top: 1rem;">
+          <div class="card" style="border-left: 4px solid var(--success); display: flex; flex-direction: column;">
+            <h4 style="margin: 0 0 0.5rem;">Frontend Developer</h4>
+            <div class="kpi" style="padding: 0.6rem; margin-bottom: 0.8rem;"><span class="muted small">Match Score</span><b style="color: var(--success); font-size: 1.5rem;">80%</b></div>
+            <p class="small muted" style="margin: 0.3rem 0;"><strong>Matched:</strong> React, JS, HTML, CSS</p>
+            <p class="small" style="color: var(--danger); margin: 0.3rem 0;"><strong>Missing:</strong> Git</p>
+            <p class="small muted" style="margin: 0.3rem 0; flex-grow: 1;"><em>Suggestion: Learn Git to improve match.</em></p>
+            <div class="actions" style="margin-top: 1rem; width: 100%;">
+              <button class="btn" style="flex: 1; padding: 0.4rem; font-size: 0.85rem;">Apply</button>
+              <button class="btn secondary" style="flex: 1; padding: 0.4rem; font-size: 0.85rem;">Practice</button>
+            </div>
+          </div>
+          
+          <div class="card" style="border-left: 4px solid var(--warning); display: flex; flex-direction: column;">
+            <h4 style="margin: 0 0 0.5rem;">Full Stack Developer</h4>
+            <div class="kpi" style="padding: 0.6rem; margin-bottom: 0.8rem;"><span class="muted small">Match Score</span><b style="color: var(--warning); font-size: 1.5rem;">65%</b></div>
+            <p class="small muted" style="margin: 0.3rem 0;"><strong>Matched:</strong> Java, SQL, HTML</p>
+            <p class="small" style="color: var(--danger); margin: 0.3rem 0;"><strong>Missing:</strong> JS, React</p>
+            <p class="small muted" style="margin: 0.3rem 0; flex-grow: 1;"><em>Suggestion: Learn React & JS.</em></p>
+            <div class="actions" style="margin-top: 1rem; width: 100%;">
+              <button class="btn" style="flex: 1; padding: 0.4rem; font-size: 0.85rem;">Apply</button>
+              <button class="btn secondary" style="flex: 1; padding: 0.4rem; font-size: 0.85rem;">Practice</button>
+            </div>
+          </div>
+          
+          <div class="card" style="border-left: 4px solid var(--accent); display: flex; flex-direction: column;">
+            <h4 style="margin: 0 0 0.5rem;">Backend Developer</h4>
+            <div class="kpi" style="padding: 0.6rem; margin-bottom: 0.8rem;"><span class="muted small">Match Score</span><b style="color: var(--accent); font-size: 1.5rem;">75%</b></div>
+            <p class="small muted" style="margin: 0.3rem 0;"><strong>Matched:</strong> Java, SQL, APIs</p>
+            <p class="small" style="color: var(--danger); margin: 0.3rem 0;"><strong>Missing:</strong> Spring Boot</p>
+            <p class="small muted" style="margin: 0.3rem 0; flex-grow: 1;"><em>Suggestion: Learn Spring Boot.</em></p>
+            <div class="actions" style="margin-top: 1rem; width: 100%;">
+              <button class="btn" style="flex: 1; padding: 0.4rem; font-size: 0.85rem;">Apply</button>
+              <button class="btn secondary" style="flex: 1; padding: 0.4rem; font-size: 0.85rem;">Practice</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>10 Top Interview Questions & Model Answers</h2>
+        <div class="interview-qa-list list">
+          <div class="qa-item" data-search-item>
+            <strong>1. Introduce Yourself</strong>
+            <p class="muted">“I’m a motivated and responsible individual with a strong interest in learning and growing professionally. I have developed skills such as communication, problem-solving, and teamwork through my academic/projects experience. I’m someone who adapts quickly, takes initiative, and always looks for ways to improve. I’m excited about opportunities where I can contribute and grow at the same time.”</p>
+          </div>
+          <div class="qa-item" data-search-item>
+            <strong>2. Why do you want to join this company?</strong>
+            <p class="muted">“I want to join your company because of its strong reputation, growth opportunities, and focus on innovation. I believe your work environment encourages learning and development, which aligns with my career goals. I’m particularly interested in contributing my skills while also gaining valuable experience from your team.”</p>
+          </div>
+          <div class="qa-item" data-search-item>
+            <strong>3. Where do you see yourself in 5 years?</strong>
+            <p class="muted">“In the next five years, I see myself growing into a skilled professional with strong expertise in my field. I aim to take on more responsibilities, contribute to important projects, and possibly move into a leadership role where I can guide others.”</p>
+          </div>
+          <div class="qa-item" data-search-item>
+            <strong>4. How can you help grow our company?</strong>
+            <p class="muted">“I can contribute by being dedicated, productive, and continuously improving my skills. I focus on delivering quality work, finding efficient solutions, and collaborating well with my team. Over time, I can add value by taking initiative and helping achieve company goals.”</p>
+          </div>
+          <div class="qa-item" data-search-item>
+            <strong>5. How do you handle problems during tough times?</strong>
+            <p class="muted">“I stay calm and focus on understanding the problem clearly. I break it down into smaller parts, prioritize tasks, and look for practical solutions. If needed, I seek guidance from my team. I believe staying positive and solution-oriented helps overcome tough situations.”</p>
+          </div>
+          <div class="qa-item" data-search-item>
+            <strong>6. How do you resolve team conflicts and improve collaboration?</strong>
+            <p class="muted">“I handle conflicts by listening to all perspectives without bias and focusing on the issue, not the person. I encourage open communication and try to find a common solution that benefits the team. I believe respect, clarity, and teamwork are key to strong collaboration.”</p>
+          </div>
+          <div class="qa-item" data-search-item>
+            <strong>7. If another company offers a higher salary, will you leave?</strong>
+            <p class="muted">“While salary is important, I value learning, growth, and a positive work environment more. If I see good opportunities for development and meaningful work here, I would prefer to stay and grow with the company.”</p>
+          </div>
+          <div class="qa-item" data-search-item>
+            <strong>8. What are your salary expectations?</strong>
+            <p class="muted">“I’m open to a fair and competitive salary based on industry standards and my skills. I’m more focused on learning and growth opportunities at this stage.”</p>
+          </div>
+          <div class="qa-item" data-search-item>
+            <strong>9. Are you ready to maintain work-life balance and work flexible hours?</strong>
+            <p class="muted">“Yes, I understand that sometimes work requires flexibility, and I’m willing to put in extra effort when needed. At the same time, I believe maintaining a healthy work-life balance helps improve productivity and long-term performance.”</p>
+          </div>
+          <div class="qa-item" data-search-item>
+            <strong>10. Are you willing to work at any time/day?</strong>
+            <p class="muted">“Yes, I’m flexible with my schedule when required for the job. I understand that meeting deadlines and supporting the team may require working beyond regular hours occasionally.”</p>
+          </div>
+        </div>
+      </section>
+      <section class="card section">
+        <h2>Question Search</h2>
+        <input id="globalSearch" class="input" placeholder="Search interview questions..." />
+      </section>
+      <section class="grid-3 section">
+        <article class="card">
+          <h3>Role-Based Tracks</h3>
+          <ul class="list">
+            <li>Frontend: React, JS, state, optimization</li>
+            <li>Backend: APIs, DB design, security</li>
+            <li>Full Stack: architecture + deployment</li>
+            <li>Data Analyst: SQL, BI, interpretation</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Evaluation Rubric</h3>
+          <ul class="list">
+            <li>Technical Accuracy: /10</li>
+            <li>Communication Clarity: /10</li>
+            <li>Confidence & Structure: /10</li>
+            <li>Problem Solving Approach: /10</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Improvement Suggestions</h3>
+          <ul class="list">
+            <li>Use STAR method in behavioral answers</li>
+            <li>Add metrics in project explanation</li>
+            <li>Keep answers concise (60-90 seconds)</li>
+            <li>Practice 5 HR answers daily</li>
+          </ul>
+        </article>
+      </section>
+      <section class="card section" id="hrQuizSection" style="margin-top: 2rem; border-color: var(--accent);">
+        <h2>🗣️ Interactive HR Mock Interview Quiz</h2>
+        <p class="muted">Based on your resume, prepare for behavioral rounds. Select the best professional answer for each question to see your HR Interview Score and personalized analysis.</p>
+
+        <form id="hrQuizForm" style="margin-top: 1.5rem;">
+          <!-- Q1 -->
+          <div style="margin-bottom: 1.5rem; background: var(--card); padding: 1.5rem; border-radius: 8px;">
+            <p><strong>1. "Where do you see yourself in 5 years?"</strong></p>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q1" value="wrong"> A) I want to start my own business and leave this industry.</label>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q1" value="correct"> B) Growing professionally within this company and taking on more leadership responsibilities.</label>
+            <label style="display: block;"><input type="radio" name="q1" value="wrong"> C) I don't really know yet, I just need a job right now.</label>
+          </div>
+
+          <!-- Q2 -->
+          <div style="margin-bottom: 1.5rem; background: var(--card); padding: 1.5rem; border-radius: 8px;">
+            <p><strong>2. "Why should we hire you?"</strong></p>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q2" value="wrong"> A) Because I am the best candidate you will ever meet.</label>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q2" value="wrong"> B) Because I am desperate for a job and need money.</label>
+            <label style="display: block;"><input type="radio" name="q2" value="correct"> C) My technical skills perfectly align with your goals, and I am a fast learner eager to add value.</label>
+          </div>
+
+          <!-- Q3 -->
+          <div style="margin-bottom: 1.5rem; background: var(--card); padding: 1.5rem; border-radius: 8px;">
+            <p><strong>3. "How do you handle team conflict?"</strong></p>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q3" value="correct"> A) By listening to all perspectives openly, focusing on the issue, and seeking a common solution.</label>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q3" value="wrong"> B) I argue until I prove that my approach is the correct one.</label>
+            <label style="display: block;"><input type="radio" name="q3" value="wrong"> C) I completely avoid the team member causing the conflict.</label>
+          </div>
+
+          <!-- Q4 -->
+          <div style="margin-bottom: 1.5rem; background: var(--card); padding: 1.5rem; border-radius: 8px;">
+            <p><strong>4. "What is your biggest weakness?"</strong></p>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q4" value="wrong"> A) I work too hard and care too much.</label>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q4" value="correct"> B) A real, minor weakness (like over-analyzing), but I am actively using tools/methods to improve it.</label>
+            <label style="display: block;"><input type="radio" name="q4" value="wrong"> C) I honestly don't have any weaknesses.</label>
+          </div>
+
+          <!-- Q5 -->
+          <div style="margin-bottom: 1.5rem; background: var(--card); padding: 1.5rem; border-radius: 8px;">
+            <p><strong>5. "Are you willing to stretch or work flexible hours?"</strong></p>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q5" value="wrong"> A) No, I leave strictly at 5 PM no matter what.</label>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q5" value="correct"> B) Yes, I am flexible to support the team during tight deadlines, while maintaining a healthy balance generally.</label>
+            <label style="display: block;"><input type="radio" name="q5" value="wrong"> C) Yes, I will work 24/7 without taking any breaks.</label>
+          </div>
+
+          <!-- Q6 -->
+          <div style="margin-bottom: 1.5rem; background: var(--card); padding: 1.5rem; border-radius: 8px;">
+            <p><strong>6. "How do you handle highly stressful situations?"</strong></p>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q6" value="correct"> A) I stay calm, break the problem into smaller prioritizeable tasks, and communicate with my stakeholders.</label>
+            <label style="display: block; margin-bottom: 0.5rem;"><input type="radio" name="q6" value="wrong"> B) I panic and usually ask my manager to solve the problem for me.</label>
+            <label style="display: block;"><input type="radio" name="q6" value="wrong"> C) I ignore the emails until the stress passes.</label>
+          </div>
+
+          <button type="button" class="btn" id="submitHrQuiz" style="padding: 1rem 2rem; font-size: 1.1rem; width: 100%;">Analyze My HR Answers</button>
+        </form>
+
+        <div id="hrQuizResult" style="display: none; margin-top: 2rem; padding: 2rem; background: rgba(14, 165, 233, 0.05); border: 1px solid var(--accent); border-radius: 12px;">
+          <h3 style="margin-top: 0; text-align: center;">📊 Your HR Interview Analysis</h3>
+          <div style="text-align: center; margin: 1.5rem 0;">
+            <span style="font-size: 1.2rem; color: var(--muted);">Final Score</span><br />
+            <b id="hrScoreDisplay" style="font-size: 3.5rem; color: var(--success);">0/6</b>
+          </div>
+          
+          <div class="grid-2">
+            <div style="background: rgba(34, 197, 94, 0.1); padding: 1.5rem; border-left: 4px solid var(--success); border-radius: 6px;">
+              <h4 style="margin-top: 0; color: var(--success);">✅ Your Strengths</h4>
+              <ul id="hrStrengths" class="list small" style="margin-bottom: 0;"></ul>
+            </div>
+            <div style="background: rgba(220, 38, 38, 0.1); padding: 1.5rem; border-left: 4px solid var(--danger); border-radius: 6px;">
+              <h4 style="margin-top: 0; color: var(--danger);">⚠️ Areas to Improve</h4>
+              <ul id="hrImprovements" class="list small" style="margin-bottom: 0;"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><div class="container footer-inner"><p class="footer-line">Developed by V. MANOJ at TAKSHASHILA UNIVERSITY.</p><div class="footer-links"><a href="home.html">Home</a><span>|</span><a href="developer.html">Developer</a><span>|</span><a href="mailto:mumumumu1327@gmail.com">Feedback</a></div></div></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
+
+
+
+
+

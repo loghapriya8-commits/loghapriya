@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>RESUME BUILDER PORTAL | NANO-CAREER SOLUTIONS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="container top-nav-inner">
+        <a class="brand" href="home.html"><span class="logo-mark">📄</span> NANO-CAREER SOLUTIONS</a>
+        <nav class="nav-links"><a href="home.html">🏠 Home</a><a href="resume.html">📄 Resume</a><a href="jobs.html">💼 Jobs</a><a href="govt.html">🏛 Govt</a><a href="private.html">🏢 Private</a><a href="interview.html" class="nav-highlight">🎯 Interview</a><a href="news.html">📰 News</a><a href="developer.html">👨‍💻 Developer</a></nav>
+        <div class="actions"><select id="langSelect" class="lang-select"><option value="en">EN</option><option value="ta">TA</option><option value="hi">HI</option><option value="te">TE</option><option value="bn">BN</option><option value="ml">ML</option></select><button class="btn secondary" id="voiceStart">🎙</button><button class="btn secondary" id="voiceStop">⏹</button></div>
+      </div>
+    </header>
+    <main class="container">
+      <section class="section">
+        <article class="card">
+          <span class="badge">PAGE / SECTION 1</span>
+          <h1>RESUME BUILDER PORTAL (ALL-IN-ONE CAREER HUB)</h1>
+          <p class="muted">AI Resume Crafter, Resume Analyzer, Resume-Based Interview, JD match, ATS score, downloadable PDF, and profile/portfolio upload.</p>
+        </article>
+      </section>
+      <section class="section grid-2">
+        <article class="card">
+          <h2>Resume Input Form</h2>
+          <div class="grid-2">
+            <div><label>Full Name</label><input id="fullName" class="input" /></div>
+            <div><label>Email</label><input id="email" class="input" type="email" /></div>
+            <div><label>Phone</label><input id="phone" class="input" /></div>
+            <div><label>Address (City, State)</label><input id="address" class="input" /></div>
+            <div><label>LinkedIn</label><input id="linkedin" class="input" placeholder="https://linkedin.com/in/username" /></div>
+            <div><label>GitHub / Portfolio</label><input id="portfolio" class="input" placeholder="https://github.com/username" /></div>
+            <div><label>Target Role</label><input id="targetRole" class="input" placeholder="Frontend Developer" /></div>
+            <div><label>Theme Color</label><select id="resumeTheme"><option>Sky Blue</option><option>White</option></select></div>
+            <div><label>Template</label><select id="resumeTemplate"><option>Modern</option><option>Professional</option><option>ATS Standard</option><option>Fresher</option></select></div>
+          </div>
+          <label>Education (one per line)</label><textarea id="education" rows="3"></textarea>
+          <label>Programming Languages</label><input id="languagesInput" class="input" placeholder="C, C++, Java, Python, JS" />
+          <label>Frameworks / Tools</label><input id="tools" class="input" placeholder="React, Node, Tailwind, Git" />
+          <label>Databases / Cloud / Platforms</label><input id="platforms" class="input" placeholder="MySQL, MongoDB, AWS, Firebase, Vercel" />
+          <label>Soft Skills</label><input id="softSkills" class="input" />
+          <label>Internship / Experience</label><textarea id="experience" rows="3"></textarea>
+          <label>Projects</label><textarea id="projects" rows="4"></textarea>
+          <label>Certifications / Achievements</label><textarea id="certs" rows="3"></textarea>
+          <label>Hobbies / Interests</label><input id="hobbies" class="input" />
+          <br />
+          <div class="upload-box" data-upload-group>
+            <h3>Profile Photo Upload</h3>
+            <img class="upload-preview" data-file-preview src="https://placehold.co/100x100/png?text=IMG" alt="profile preview" />
+            <p data-file-label>No file chosen</p>
+            <input type="file" accept="image/*,.pdf,.doc,.docx" data-upload-input data-preview-target="" data-name-target="" />
+            <div class="actions"><button class="btn secondary" type="button" data-action="save">Save</button><button class="btn danger" type="button" data-action="delete">Delete</button><button class="btn secondary" type="button" data-action="cancel">Cancel</button></div>
+          </div>
+          <br />
+          <button id="generateResume" class="btn">Generate My Resume</button>
+          <button id="downloadResume" class="btn secondary">Download as PDF</button>
+        </article>
+        <article class="card">
+          <h2>AI Resume Analyzer</h2>
+          <div class="upload-box">
+            <p>Upload Resume (PDF/DOCX) and analyze role fit.</p>
+            <input type="file" accept=".pdf,.doc,.docx" />
+            <button id="analyzeBtn" class="btn">Analyze Skills</button>
+          </div>
+          <h3>Overall Score: <span id="overallScore">78/100</span></h3>
+          <ul class="list">
+            <li>Summary: <span id="sumScore">7/10</span></li>
+            <li>Skills: <span id="skillScore">9/10</span></li>
+            <li>Projects: <span id="projectScore">6/10</span></li>
+            <li>Experience: <span id="expScore">7/10</span></li>
+            <li>Formatting: <span id="formatScore">8/10</span></li>
+          </ul>
+          <h3>ATS Keywords</h3>
+          <p id="atsKeywords" class="muted">React, JavaScript, REST API, Responsive Design, Git, HTML/CSS</p>
+          <h3>Top 5 Instant Fixes</h3>
+          <ul id="fixList" class="list"></ul>
+          <h3>Resume-Based Interview</h3>
+          <p class="muted">Easy / Medium / Hard questions with sample hints and confidence feedback.</p>
+          
+          <div class="card card-premium section" style="margin-top:2rem;">
+            <h3>?? Advanced ATS Analysis Insights</h3>
+            <div class="grid-2">
+              <div class="roadmap-step">
+                <strong>Skill Density:</strong> <span id="skillDensity">High</span><br>
+                <small class="muted">Keyword frequency vs industry standard.</small>
+              </div>
+              <div class="roadmap-step">
+                <strong>Readability:</strong> <span id="readabilityScore">A+</span><br>
+                <small class="muted">Clarity and formatting consistency.</small>
+              </div>
+              <div class="roadmap-step">
+                <strong>JD Alignment:</strong> <span id="jdAlignment">85%</span><br>
+                <small class="muted">Matches current market job descriptions.</small>
+              </div>
+              <div class="roadmap-step">
+                <strong>Quantifiable Impact:</strong> <span id="impactScore">Medium</span><br>
+                <small class="muted">Use of numbers and results in projects.</small>
+              </div>
+            </div>
+            <div class="notice" style="margin-top:1rem;">
+              <strong>AI Tip:</strong> Use "Action Verbs" like <i>Optimized</i>, <i>Engineered</i>, and <i>Spearheaded</i> to increase your impact score.
+            </div>
+          </div>`n          <div id="resumePreview" class="card"><p class="muted">Generated resume preview appears here...</p></div>
+        </article>
+      </section>
+      <section class="grid-3 section">
+        <article class="card">
+          <h3>Recommended Resume Versions</h3>
+          <ul class="list">
+            <li>Fresher one-page ATS version</li>
+            <li>Developer project-focused version</li>
+            <li>Internship-focused concise version</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Quick Share Links</h3>
+          <ul class="list">
+            <li><a target="_blank" href="https://web.whatsapp.com/">Share in WhatsApp</a></li>
+            <li><a target="_blank" href="https://web.telegram.org/">Share in Telegram</a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/">Share in LinkedIn</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Important Resume Learning Links</h3>
+          <ul class="list">
+            <li><a target="_blank" href="https://in.indeed.com/career-advice/resume-examples">Indeed Resume Examples</a></li>
+            <li><a target="_blank" href="https://in.indeed.com/career-advice/resumes-cover-letters">Resumes & Cover Letters</a></li>
+            <li><a target="_blank" href="https://in.indeed.com/career-advice/cover-letter-examples">Cover Letters</a></li>
+          </ul>
+        </article>
+      </section>
+    </main>
+    <footer class="footer"><div class="container footer-inner"><p class="footer-line">Developed by V. MANOJ at TAKSHASHILA UNIVERSITY.</p><div class="footer-links"><a href="home.html">Home</a><span>|</span><a href="developer.html">Developer</a><span>|</span><a href="mailto:mumumumu1327@gmail.com">Feedback</a></div></div></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+

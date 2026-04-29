@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>PRIVATE JOBS & DETAILS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="top-nav"><div class="container top-nav-inner"><a class="brand" href="home.html"><span class="logo-mark">🏢</span> NANO-CAREER SOLUTIONS</a><nav class="nav-links"><a href="home.html">🏠 Home</a><a href="resume.html">📄 Resume</a><a href="jobs.html">💼 Jobs</a><a href="govt.html">🏛 Govt</a><a href="private.html">🏢 Private</a><a href="interview.html" class="nav-highlight">🎯 Interview</a><a href="news.html">📰 News</a><a href="developer.html">👨‍💻 Developer</a></nav><div class="actions"><select id="langSelect" class="lang-select"><option value="en">EN</option><option value="ta">TA</option><option value="hi">HI</option><option value="te">TE</option><option value="bn">BN</option><option value="ml">ML</option></select><button class="btn secondary" id="voiceStart">🎙</button><button class="btn secondary" id="voiceStop">⏹</button></div></div></header>
+    <main class="container section">
+      <article class="card"><h1>PRIVATE JOBS & DETAILS</h1><p class="muted">Private job portals, top companies, direct career links, salary insights, internship program, and roadmap.</p></article>
+      <section class="grid-3 section">
+        <article class="card"><h3>Featured Portal</h3><p>Indeed Tamil Nadu Fresher Jobs</p><a class="btn" target="_blank" href="https://in.indeed.com/q-fresher-l-tamil-nadu-jobs.html">Visit</a></article>
+        <article class="card"><h3>Top Companies</h3><ul class="list"><li>TCS, Infosys, HDFC Bank, Airtel</li><li>L&T, ITC, Mahindra</li><li>Zoho, TVS, Cognizant, Titan</li></ul></article>
+        <article class="card"><h3>Direct Careers</h3><ul class="list"><li><a target="_blank" href="https://www.tcs.com/careers/india">TCS Careers</a></li><li><a target="_blank" href="https://www.infosys.com/careers/apply.html">Infosys Careers</a></li><li><a target="_blank" href="https://careers.zohocorp.com/jobs/careers">Zoho Careers</a></li></ul></article>
+      </section>
+      <section class="grid-2">
+        <article class="card"><h2>Salary Insights (Average / year)</h2><ul class="list"><li>Software Engineer — Rs.8,48,551</li><li>Business Analyst — Rs.8,05,637</li><li>Data Entry Clerk — Rs.2,93,290</li><li>Accountant — Rs.2,54,103</li><li>Graphic Designer — Rs.2,52,418</li></ul></article>
+        <article class="card"><h2>Internship Program (Down Side)</h2><ul class="list"><li>Domains: Web, AI/ML, Cloud, Cybersecurity, IoT</li><li>Types: Online, Offline, Paid, Unpaid, Research</li><li>Portals: <a target="_blank" href="https://www.sanfoundry.com/internship/">Sanfoundry</a></li><li>Top Hiring: Google, Microsoft, Amazon, IBM, TCS, Infosys, Zoho</li><li>Stipend: Rs.10k to Rs.80k+</li></ul></article>
+      </section>
+      <section class="card section" id="smartPrivateExams">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <div>
+            <h2>🔥 AI Smart Company Matcher</h2>
+            <p class="muted">Enter your tech stack (e.g., React, Java, Data, Python) to auto-filter top tech companies hiring right now.</p>
+          </div>
+          <input id="smartPrivateFilter" class="input" style="width: 300px; border-color: var(--accent);" placeholder="💡 e.g. React, Java, Data..." />
+        </div>
+        <div class="table-wrap">
+          <table class="table" style="width:100%; text-align:left;">
+            <thead>
+              <tr><th>Company</th><th>Hiring Type</th><th>Apply Time (2026)</th><th>Action</th></tr>
+            </thead>
+            <tbody id="privateExamsTableBody">
+              <tr data-tags="java python fullstack it mass"><td>TCS</td><td>NQT / Digital</td><td>Jan–Mar / Jul-Sept</td><td><a href="https://www.tcs.com/careers" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java python mass hackwithinfy"><td>Infosys</td><td>Off-Campus / HackWithInfy</td><td>Jan–Feb / Jul-Aug</td><td><a href="https://www.infosys.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java fullstack mass turbo"><td>Wipro</td><td>Elite NTH / Turbo</td><td>Jan–Mar / Jul-Aug</td><td><a href="https://careers.wipro.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="c c++ java mass"><td>HCLTech</td><td>Graduate Engineer Trainee</td><td>Feb–March</td><td><a href="https://www.hcltech.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java net mass genc"><td>Cognizant</td><td>GenC / GenC Next</td><td>Jan–Mar / Aug-Sept</td><td><a href="https://careers.cognizant.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java cloud fullstack mass"><td>Accenture</td><td>Off-Campus / Advanced</td><td>Jan–Mar / Aug-Sept</td><td><a href="https://www.accenture.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java testing mass exceller"><td>Capgemini</td><td>Fresher / Exceller</td><td>Feb–Mar / Jul-Sept</td><td><a href="https://www.capgemini.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java fullstack techmahindra"><td>Tech Mahindra</td><td>Off-Campus</td><td>Feb–March</td><td><a href="https://careers.techmahindra.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="react frontend java product"><td>Zoho</td><td>Developer Hiring</td><td>Jan–March</td><td><a href="https://careers.zoho.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="react frontend ruby product"><td>Freshworks</td><td>Product Hiring</td><td>Jan–March</td><td><a href="https://www.freshworks.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="react java python product sde"><td>Amazon</td><td>SDE / Internship</td><td>Apr–Jun / Oct-Dec</td><td><a href="https://www.amazon.jobs" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="c++ python data go product"><td>Google</td><td>Software Eng / Internship</td><td>Apr–Jun / Oct-Dec</td><td><a href="https://careers.google.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="c# .net java react product"><td>Microsoft</td><td>Software Eng / Internship</td><td>Apr–Jun / Oct-Dec</td><td><a href="https://careers.microsoft.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="data cloud ai java node"><td>IBM</td><td>Associate Developer</td><td>May–June</td><td><a href="https://www.ibm.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java backend sql database"><td>Oracle</td><td>Graduate Roles</td><td>May–June</td><td><a href="https://www.oracle.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="hardware networking cloud"><td>Dell Technologies</td><td>Hiring</td><td>May–June</td><td><a href="https://jobs.dell.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="hardware it networking"><td>HP</td><td>Hiring</td><td>May–June</td><td><a href="https://careers.hp.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="networking c c++ telecom"><td>Cisco</td><td>Software Roles</td><td>April–June</td><td><a href="https://jobs.cisco.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="c++ hardware iot electronics"><td>Intel</td><td>Hiring</td><td>May–June</td><td><a href="https://jobs.intel.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="abap java fullstack erp"><td>SAP</td><td>Hiring</td><td>April–June</td><td><a href="https://jobs.sap.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java c++ it ltimindtree"><td>Mindtree (LTI)</td><td>Hiring</td><td>Aug–Sept</td><td><a href="https://www.ltimindtree.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="engineering mechanical civil auto"><td>L&T</td><td>Engineering Hiring</td><td>July–Sept</td><td><a href="https://www.larsentoubro.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="engineering core management"><td>Reliance Industries</td><td>Graduate Hiring</td><td>Aug–Sept</td><td><a href="https://careers.ril.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="engineering core energy"><td>Adani Group</td><td>Hiring</td><td>Aug–Sept</td><td><a href="https://careers.adani.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java node payment fintech"><td>Paytm</td><td>Hiring</td><td>Oct–Dec</td><td><a href="https://paytm.com/careers" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java python e-commerce supply"><td>Flipkart</td><td>Hiring</td><td>Oct–Dec</td><td><a href="https://www.flipkartcareers.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java node go supply product"><td>Swiggy</td><td>Hiring</td><td>Oct–Dec</td><td><a href="https://careers.swiggy.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java node react foodtech"><td>Zomato</td><td>Hiring</td><td>Oct–Dec</td><td><a href="https://www.zomato.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java fullstack edtech"><td>Byju's</td><td>Hiring</td><td>Oct–Dec</td><td><a href="https://byjus.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="java backend fintech payment"><td>PhonePe</td><td>Hiring</td><td>Oct–Dec</td><td><a href="https://www.phonepe.com" target="_blank" class="btn">Apply</a></td></tr>
+              <tr data-tags="node java react fintech"><td>Razorpay</td><td>Hiring</td><td>Oct–Dec</td><td><a href="https://razorpay.com" target="_blank" class="btn">Apply</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><div class="container footer-inner"><p class="footer-line">Developed by V. MANOJ at TAKSHASHILA UNIVERSITY.</p><div class="footer-links"><a href="home.html">Home</a><span>|</span><a href="developer.html">Developer</a><span>|</span><a href="mailto:mumumumu1327@gmail.com">Feedback</a></div></div></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
+
+
+
+
+
